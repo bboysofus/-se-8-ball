@@ -91,6 +91,9 @@
         <audio id="blop">
             <source src="blop.mp3" type="audio/mp3">
         </audio>
+        <audio id="errorSound">
+            <source src="errorSound.mp3" type="audio/mp3">
+        </audio>
     </body>
 
     <script>
@@ -100,11 +103,17 @@
                 event.preventDefault();
                 document.getElementById("btn").click();
             }
-        });
+        })
+
         var blop = document.getElementById("blop")
         function playBlop(){
             blop.play();
-        }
+        };
+
+        var errorSound = document.getElementById("errorSound")
+        function playErrorSound(){
+            errorSound.play();
+        };
 
         var answers = [
             "That's gay..", 
@@ -165,8 +174,7 @@
             "Bruh..", 
             "Oh, my, god!", 
             "Very funny..", 
-            "Of course!", 
-            "No, it's freaky Friday!", 
+            "Of course!",  
             "lol", 
             "Stop..", 
             "Just stop..", 
@@ -196,6 +204,7 @@
             else {
                 document.getElementById("error").innerHTML = "You're supposed to write something!";
                 document.getElementById('answer').innerHTML = " ";
+                errorSound.play();
             }
         }
     
