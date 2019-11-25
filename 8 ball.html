@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Magic 8 ball</title>
+        <style>
+        body{
+            background-color: rgb(0, 0, 0);
+            padding: 0;
+            margin: 0;
+        }
+        .container{
+            width: 30vh;
+            position: relative;
+            margin: 10vh auto;
+            text-align: center
+        }
+        #header1{
+            margin-top: 0;
+            padding: 0;
+            text-align: center;
+            color: white;
+            font-size: 70px;
+            text-shadow: -2px -2px 0 rgb(255, 0, 0), 2px -2px 0 rgb(255, 0, 0), -2px 2px 0 rgb(255, 0, 0), 2px 2px 0 rgb(255, 0, 0);
+        }
+        #header2{
+            margin-top: 15vh;
+            padding: 0;
+            text-align: center;
+            color: white;
+            font-size: 40px;
+            text-shadow: -1px -1px 0 rgb(255, 0, 0), 1px -1px 0 rgb(255, 0, 0), -1px 1px 0 rgb(255, 0, 0), 1px 1px 0 rgb(255, 0, 0);
+        }
+        #ball{
+            position: relative;
+            max-width: 100%;
+        }
+        p{
+            font-size: 20px;
+            color: white;
+        }
+        #btn{
+            padding: 1px;
+            margin: 5px;
+            border-radius: 10px;
+            background-color: red;
+            width: 24vh;
+            position: relative;
+        }
+        #btn span{
+            cursor: pointer;
+            font-stretch: condensed;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
+        #btn span:after{
+            content: 'Click to send';
+            font-stretch: condensed;
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -30px;
+            transition: 0.5s;
+        }
+        #btn:hover span{
+            padding-top: 25px;
+        }
+        #btn:hover span:after{
+            opacity: 1;
+            right: 0;
+        }
+        #box{
+            text-align: center;
+            border-radius: 10px;
+            font-size: 18px;
+        }
+        </style>
+    </head>
+
+    <body>
+        <h2 id="header2">Welcome to the 8 ball!</h2>
+        <h1 id="header1">What's on your mind..?</h1>
+        <div class="container">
+            <textarea id="box" style="resize: none;" placeholder="Write something.."></textarea>
+            <button type="submit" id="btn" onclick="answer()"><span></span></button>
+            <p id="answer"></p>
+            <p id="error"></p>
+        </div>
+        <audio id="blop">
+            <source src="blop.mp3" type="audio/mp3">
+        </audio>
+    </body>
+
+    <script>
+        var blop = document.getElementById("blop")
+        function playBlop(){
+            blop.play();
+        }
+
+        var answers = [
+            "That's gay..", 
+            "Really?", "I like you too", 
+            "I'm bored..", 
+            "What a question!", 
+            "Go fuck yourself..", 
+            "Yeah..", 
+            "What are you doing?", 
+            "Go away!", 
+            "What would you like?", 
+            "I hate you!", 
+            "Who's your daddy?", 
+            "I agree!", 
+            "That's rude..", 
+            "Why you do this!?", 
+            "Are you serious?", 
+            "Not funny..", 
+            "Is that your name?", 
+            "Woah!", 
+            "What?", 
+            "Really?", 
+            "No.", 
+            "Sure!", 
+            "That's funny", 
+            "No?", 
+            "I think you should reconsider that..", 
+            "I see..", 
+            "How can that be?", 
+            "AHAHAHAH!", 
+            "Absolutely not!", 
+            "Nice haircut!", 
+            "Find something else to do..", 
+            "Do you enjoy life right now?", 
+            "You're boring..", 
+            "God no!", 
+            "Hell yeah!", 
+            "Go to hell..", 
+            "I see hope for you..", 
+            "Get a life instead", 
+            "Probably", 
+            "Let's get going!", 
+            "Hmmmmmmmmmmmmmmmmmm..", 
+            "Go take a shower", 
+            "I doubt it..", 
+            "Nope!", 
+            "Hello!", 
+            "Hi!", 
+            "What's up?", 
+            "Why you so happy?", 
+            "Did you remeber to eat?", 
+            "Did you brush your teeth?", 
+            "Think again..", 
+            "Chill bro", 
+            "Maybe suicide could be an option here?", 
+            "Why you bully me?", 
+            "Super!", 
+            "Bruh..", 
+            "Oh, my, god!", 
+            "Very funny..", 
+            "Of course!", 
+            "No, it's freaky Friday!", 
+            "lol", 
+            "Stop..", 
+            "Just stop..", 
+            "Stop!", 
+            "Stop it!", 
+            "Stop yourself..", 
+            "You're gay", 
+            "Me??", 
+            "I don't know..", 
+            "Are you hungry?", 
+            "Go get something to eat..", 
+            "I like you!", 
+            "I like that!", 
+            "That's clever", 
+            "Do you like playing?", 
+            "Not funny at all.."]
+
+        function answer(){
+            var random = answers[Math.floor(Math.random() * answers.length)]
+            var val = document.getElementById("box").value;
+            if (!val == ''){
+                document.getElementById('answer').innerHTML = random;
+                document.getElementById("error").innerHTML = " ";
+                blop.play();
+
+            }
+            else {
+                document.getElementById("error").innerHTML = "You're supposed to write something!";
+                document.getElementById('answer').innerHTML = " ";
+            }
+        }
+    
+    </script>
+</html>
