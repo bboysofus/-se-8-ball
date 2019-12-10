@@ -6,9 +6,19 @@
         <title>Magic 8 ball</title>
         <style>
         body{
+            overflow: hidden;
             background-color: rgb(0, 0, 0);
             padding: 0;
             margin: 0;
+        }
+        #img{
+            overflow: hidden;
+            margin: 0 auto;
+            margin-right: 150px;
+            padding: 0px 0px;
+            float: right;
+            position: relative;
+            
         }
         .container{
             width: 30vh;
@@ -41,31 +51,35 @@
             color: white;
         }
         #btn{
+            color: white;
+            text-align: center;
             padding: 1px;
             margin: 5px;
             border-radius: 10px;
             background-color: red;
-            width: 24vh;
+            width: 150px;
             position: relative;
+            cursor: pointer;
         }
         #btn span{
             cursor: pointer;
-            font-stretch: condensed;
             display: inline-block;
-            position: relative;
+            position: static;
             transition: 0.5s;
+            text-align: center;
+            margin: 0 auto;
+            padding: 0px;
         }
         #btn span:after{
             content: 'Click to send';
             font-stretch: condensed;
-            position: absolute;
+            position: relative;
             opacity: 0;
-            top: 0;
-            right: -30px;
+            right: 30px;
             transition: 0.5s;
         }
         #btn:hover span{
-            padding-top: 25px;
+            padding-top: 0px;
         }
         #btn:hover span:after{
             opacity: 1;
@@ -84,10 +98,11 @@
         <h1 id="header1">What's on your mind..?</h1>
         <div class="container">
             <textarea id="box" style="resize: none;" placeholder="Write something.."></textarea>
-            <button type="submit" id="btn" onclick="answer()"><span></span></button>
+            <button type="submit" id="btn" onclick="answer()"><strong><span></span></strong></button>
             <p id="answer"></p>
             <p id="error"></p>
         </div>
+        <img id="img" src="8ball.png">
         <audio id="blop">
             <source src="blop.mp3" type="audio/mp3">
         </audio>
